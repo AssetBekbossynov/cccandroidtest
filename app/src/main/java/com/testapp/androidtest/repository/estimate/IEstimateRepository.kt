@@ -1,6 +1,7 @@
 package com.testapp.androidtest.repository.estimate
 
 import com.testapp.androidtest.entity.Estimate
+import io.reactivex.Flowable
 
 interface IEstimateRepository {
 
@@ -8,5 +9,5 @@ interface IEstimateRepository {
 
     suspend fun deleteAll()
 
-    suspend fun getAll(): Estimate
+    fun getAll(): Flowable<Estimate>
 }

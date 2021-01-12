@@ -2,6 +2,7 @@ package com.testapp.androidtest.repository.estimate
 
 import com.testapp.androidtest.dao.EstimateDao
 import com.testapp.androidtest.entity.Estimate
+import io.reactivex.Flowable
 
 class EstimateRepository(private val estimateDao: EstimateDao): IEstimateRepository {
 
@@ -13,7 +14,7 @@ class EstimateRepository(private val estimateDao: EstimateDao): IEstimateReposit
         estimateDao.deleteAll()
     }
 
-    override suspend fun getAll(): Estimate {
+    override fun getAll(): Flowable<Estimate> {
         return estimateDao.getAllEstimate()
     }
 }

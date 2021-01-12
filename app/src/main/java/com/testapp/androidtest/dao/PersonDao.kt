@@ -1,10 +1,10 @@
 package com.testapp.androidtest.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.testapp.androidtest.entity.Person
+import io.reactivex.Flowable
 
 @Dao
 interface PersonDao {
@@ -16,8 +16,8 @@ interface PersonDao {
     suspend fun deleteAll()
 
     @Query("SELECT * from person")
-    suspend fun getAllPerson(): Person
+    fun getAllPerson(): Flowable<Person>
 
     @Query("SELECT * from person WHERE id = :id")
-    suspend fun getPersonById(id: String): Person
+    fun getPersonById(id: String): Flowable<Person>
 }

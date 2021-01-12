@@ -2,6 +2,7 @@ package com.testapp.androidtest.dao
 
 import androidx.room.*
 import com.testapp.androidtest.entity.Estimate
+import io.reactivex.Flowable
 
 @Dao
 interface EstimateDao {
@@ -13,6 +14,6 @@ interface EstimateDao {
     suspend fun deleteAll()
 
     @Query("SELECT * from estimate")
-    suspend fun getAllEstimate(): Estimate
+    fun getAllEstimate(): Flowable<Estimate>
 
 }

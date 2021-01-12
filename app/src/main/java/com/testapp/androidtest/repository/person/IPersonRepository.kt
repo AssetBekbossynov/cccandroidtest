@@ -1,6 +1,7 @@
 package com.testapp.androidtest.repository.person
 
 import com.testapp.androidtest.entity.Person
+import io.reactivex.Flowable
 
 interface IPersonRepository {
 
@@ -8,7 +9,7 @@ interface IPersonRepository {
 
     suspend fun deleteAll()
 
-    suspend fun getAll(): Person
+    fun getAll(): Flowable<Person>
 
-    suspend fun getPersonById(id: String): Person
+    fun getPersonById(id: String): Flowable<Person>
 }

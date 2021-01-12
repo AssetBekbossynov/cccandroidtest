@@ -7,6 +7,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId "com.testapp.androidtest"
         minSdkVersion 21
@@ -38,6 +42,9 @@ dependencies {
     implementation "org.koin:koin-android:$koin"
     implementation 'com.google.code.gson:gson:2.8.6'
 
+    implementation "io.reactivex.rxjava2:rxjava:$rxJava"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid"
+    implementation "androidx.room:room-rxjava2:$rxRoom"
 
     testImplementation "androidx.room:room-testing:$room_version"
     testImplementation 'junit:junit:4.12'

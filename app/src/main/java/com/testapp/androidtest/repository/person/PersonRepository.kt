@@ -2,6 +2,7 @@ package com.testapp.androidtest.repository.person
 
 import com.testapp.androidtest.dao.PersonDao
 import com.testapp.androidtest.entity.Person
+import io.reactivex.Flowable
 
 class PersonRepository(private val personDao: PersonDao): IPersonRepository {
 
@@ -13,11 +14,11 @@ class PersonRepository(private val personDao: PersonDao): IPersonRepository {
         personDao.deleteAll()
     }
 
-    override suspend fun getAll(): Person {
+    override fun getAll(): Flowable<Person> {
         return personDao.getAllPerson()
     }
 
-    override suspend fun getPersonById(id: String): Person {
+    override fun getPersonById(id: String): Flowable<Person> {
         return personDao.getPersonById(id)
     }
 }

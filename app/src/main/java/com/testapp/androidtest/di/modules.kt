@@ -4,6 +4,8 @@ import com.testapp.androidtest.dao.EstimateDao
 import com.testapp.androidtest.dao.PersonDao
 import com.testapp.androidtest.db.AppDatabase
 import com.testapp.androidtest.repository.estimate.EstimateRepository
+import com.testapp.androidtest.repository.estimate.IEstimateRepository
+import com.testapp.androidtest.repository.person.IPersonRepository
 import com.testapp.androidtest.repository.person.PersonRepository
 import com.testapp.androidtest.ui.MainViewModel
 import org.koin.android.ext.koin.androidContext
@@ -26,11 +28,11 @@ val databaseModule = module {
 
 val repositoryModule = module {
 
-    single { EstimateRepository(get()) }
-    single { PersonRepository(get()) }
+    single<IEstimateRepository> { EstimateRepository(get()) }
+    single<IPersonRepository> { PersonRepository(get()) }
 
 }
 
 val viewModelModule = module {
-    single { MainViewModel() }
+    single { MainViewModel(get(), get()) }
 }
